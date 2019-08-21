@@ -4,9 +4,9 @@ import vertex from './shaders/vertex.glsl';
 import GyroNorm from './lib/gyronorm';
 const gn = new GyroNorm.GyroNorm();
 
-export default class Sketch {
-  constructor() {
-    this.container = document.getElementById('gl');
+export class Fake3D {
+  constructor({container, img, depthImg, vt, ht}) {
+    this.container = container;
     this.canvas = document.createElement('canvas');
     this.container.appendChild(this.canvas);
     this.gl = this.canvas.getContext('webgl');
@@ -19,10 +19,10 @@ export default class Sketch {
     this.mouseTargetX = 0;
     this.mouseTargetY = 0;
 
-    this.imageOriginal = this.container.getAttribute('data-imageOriginal');
-    this.imageDepth = this.container.getAttribute('data-imageDepth');
-    this.vth = this.container.getAttribute('data-verticalThreshold');
-    this.hth = this.container.getAttribute('data-horizontalThreshold');
+    this.imageOriginal = img;
+    this.imageDepth = depthImg;
+    this.vth = vt || 15;
+    this.hth = ht || 25;
 
     this.imageURLs = [
       this.imageOriginal,
