@@ -4,7 +4,7 @@ import vertex from './shaders/vertex.glsl';
 import GyroNorm from './lib/gyronorm';
 const gn = new GyroNorm.GyroNorm();
 
-export class Fake3D {
+export class Block {
   constructor({container, img, depthImg, vt, ht}) {
     this.container = container;
     this.canvas = document.createElement('canvas');
@@ -273,4 +273,3 @@ function clamp(number, lower, upper) {
   }
   return number;
 }
-new Sketch();
